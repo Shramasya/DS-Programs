@@ -1,0 +1,43 @@
+/*
+ * 
+ * 
+ 
+shift [1][2] to aux
+shift [3] to des
+shift [1][2] to des
+	
+shift [1] to des
+shift [2] to aux
+shift [1] to aux
+	
+shift [3] to des
+	shift [1] to current
+	shift [2] to des
+	shift
+*/
+
+public class TowersOfHanoiAlgo {
+	
+	static int count = 1;
+	
+	public static void main(String[] args) {
+		int n = 6;
+		int current = 1;
+		int destination = 3;
+		int auxillary = 2;
+		shiftAll(n, current, destination, auxillary);
+	}
+	
+	static void shiftAll(int n, int current, int destination, int auxillary){
+		if(n != 0){
+			shiftAll(n-1, current, auxillary, destination);
+			shiftOne(n, destination);
+			shiftAll(n-1, auxillary, destination, current);
+		}
+	}
+	
+	static void shiftOne(int n, int destination){
+		System.out.println("Step " + count++ + " shift " + n + " to " + destination);
+	}
+
+}
