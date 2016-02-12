@@ -1,0 +1,95 @@
+public class MyTree {
+
+	private Node root;
+	
+	public Node getRoot() {
+		return root;
+	}
+
+	public void setRoot(Node root) {
+		this.root = root;
+	}
+
+	public static void main(String[] args) {
+		
+		MyTree tree1 = new MyTree(20);
+		tree1.insertNode(tree1.getRoot(), 25);
+		tree1.insertNode(tree1.getRoot(), 18);
+		tree1.insertNode(tree1.getRoot(), 17);
+		tree1.insertNode(tree1.getRoot(), 30);
+		tree1.insertNode(tree1.getRoot(), 19);
+		tree1.insertNode(tree1.getRoot(), 24);
+		
+		tree1.postTraversing(tree1.getRoot());
+		System.out.println();
+		
+		System.out.println("End");
+	}
+	
+	MyTree(int data) {
+		Node rootNode = new Node();
+		rootNode.data = data;
+		rootNode.left = null;
+		rootNode.right = null;
+		
+		this.root = rootNode;
+	}
+	
+	public void preTraversing(Node temp) {
+		if(temp == null) {
+			return;
+		}
+		System.out.print(temp.data + " ");
+		preTraversing(temp.left);
+		preTraversing(temp.right);
+	}
+	
+	public void inTraversing(Node temp) {
+		if(temp == null) {
+			return;
+		}
+		inTraversing(temp.left);
+		System.out.print(temp.data + " ");
+		inTraversing(temp.right);
+	}
+	
+	public void postTraversing(Node temp) {
+		if(temp == null) {
+			return;
+		}
+		postTraversing(temp.left);
+		postTraversing(temp.right);
+		System.out.print(temp.data + " ");
+	}
+	
+	public void insertNode(Node temp, int data) {
+		if(temp.data > data) {
+			if(temp.left == null) {
+				Node newNode = createNewNode(data);
+				temp.left = newNode;
+				return;
+			}
+			insertNode(temp.left, data);
+		} else {
+			if(temp.right == null) {
+				Node newNode = createNewNode(data);
+				temp.right = newNode;
+				return;
+			}
+			insertNode(temp.right, data);
+		}
+	}
+	
+	public Node createNewNode(int data) {
+		Node newNode = new Node();
+		newNode.data = data;
+		newNode.left = null;
+		newNode.right = null;
+		return newNode;
+	}
+}
+
+class Node {
+	int data;
+	Node left, right;
+}
