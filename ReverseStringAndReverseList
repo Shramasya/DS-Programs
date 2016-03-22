@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+
+	public static void main(String[] args) {
+		ArrayList<String> list = new ArrayList<>();
+		list.add("aditya");
+		list.add("prateek");
+		list.add(0, "anurag");
+		list.add(3,"priya");
+		list.add("shraddha");
+		
+		for(String str : list) {
+			char rev[] = reverseString(str.toCharArray(), 0, str.length()-1);
+			System.out.println(new String(rev));
+		}
+		
+		System.out.println(list);
+		ArrayList<String> reverseList = reverseArrayList(list, 0, list.size()-1);
+		System.out.println(reverseList);
+	}
+	
+	static char[] reverseString(char arr[], int first, int second) {
+		if(first >= second) {
+			return arr;
+		}
+		char temp = arr[first];
+		arr[first] = arr[second];
+		arr[second] = temp;
+		reverseString(arr, first + 1, second - 1);
+		
+		return arr;
+	}
+	
+	static ArrayList<String> reverseArrayList(ArrayList<String> nameList, int first, int second) {
+		if(first >= second) {
+			return nameList;
+		}
+		
+		String temp = nameList.get(first);
+		nameList.remove(first);
+		nameList.add(first, nameList.get(second-1));
+		nameList.remove(second);
+		nameList.add(second, temp);
+		reverseArrayList(nameList, first + 1, second - 1);
+		
+		return nameList;
+	}
+
+}
