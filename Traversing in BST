@@ -34,6 +34,7 @@ public class MyTree {
 		
 		this.root = rootNode;
 	}
+	//Updated
 	
 	public void preTraversing(Node temp) {
 		if(temp == null) {
