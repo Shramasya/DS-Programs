@@ -24,5 +24,6 @@ public class ArraySortedOrNot {
 			return (a[n-1] > a[n-2]) ? isArraySorted(a, n-1) : false ;
 		}
 	}
+	//Done
 
 }
